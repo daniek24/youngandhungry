@@ -575,20 +575,18 @@ nav {
 
 .card-image {
   width: 100%;
-  aspect-ratio: 4/3;
-  background: var(--sky-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
   object-fit: cover;
-  overflow: hidden;
   display: block;
 }
 
-/* Wrapper that lets the title overlay the image */
+/* Wrapper — owns the dimensions so absolute children always have a parent height */
 .card-image-wrap {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  background: var(--sky-mid);
 }
 
 /* Gradient backdrop so text stays legible */
