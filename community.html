@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community – Young and Hungry with Dr. Young</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── COMMUNITY PAGE EXTRAS ── */
+
+    .community-hero {
+      text-align: center;
+      padding: 3.5rem 2rem 2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .community-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .community-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .community-hero p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      font-weight: 300;
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── PLATFORM SECTION ── */
+    .platform-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .platform-block {
+      margin-bottom: 3rem;
+    }
+
+    .platform-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .platform-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .platform-icon.instagram {
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    }
+
+    .platform-icon.tiktok {
+      background: #010101;
+    }
+
+    .platform-icon.twitter {
+      background: #000;
+    }
+
+    .platform-icon svg {
+      width: 18px;
+      height: 18px;
+      color: #fff;
+      fill: currentColor;
+    }
+
+    .platform-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* ── EMBED GRID ── */
+    .embed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* Each card wraps one embed */
+    .embed-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0.5rem;
+    }
+
+    .embed-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Placeholder shown when no embed is added yet */
+    .embed-placeholder {
+      width: 100%;
+      min-height: 220px;
+      border: 2px dashed var(--sky-dark);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .embed-placeholder svg {
+      width: 30px;
+      height: 30px;
+      opacity: 0.4;
+    }
+
+    /* Make Instagram / TikTok iframes play nicely */
+    .embed-card iframe,
+    .embed-card blockquote {
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    /* ── DIVIDER ── */
+    .platform-divider {
+      height: 1px;
+      background: var(--sky-mid);
+      margin-bottom: 2.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .embed-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">Y</div>
+    <div class="nav-center">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="community.html" class="active">Community</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about-us.html">About us</a></li>
+        <li><a href="survey.html">Test Your Knowledge</a></li>
+      </ul>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-dropdown" id="navDropdown">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="community.html" class="active">Community</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about-us.html">About us</a></li>
+      <li><a href="survey.html">Test Your Knowledge</a></li>
+    </ul>
+  </nav>
+  <script>
+    const btn = document.getElementById('navHamburger');
+    const menu = document.getElementById('navDropdown');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+  <!-- HERO -->
+  <div class="community-hero">
+    <h1>Our <em>Community</em></h1>
+    <p>Reels, clips, and conversations from across the internet — stay connected with Young and Hungry.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="platform-section">
+
+    <!-- ═══════════════════════════════════
+         INSTAGRAM REELS
+    ════════════════════════════════════ -->
+    <div class="platform-block">
+      <div class="platform-header">
+        <div class="platform-icon instagram">
+          <!-- Instagram icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308C15.584 21.988 15.204 22 12 22s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308C2.567 19.647 2.296 18.38 2.234 17.014 2.176 15.748 2.163 15.368 2.163 12s.013-3.584.071-4.85c.062-1.366.333-2.633 1.308-3.608C4.517 2.567 5.784 2.296 7.15 2.234 8.416 2.176 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+          </svg>
+        </div>
+        <div class="platform-title">Instagram Reels</div>
+      </div>
+
+      <div class="embed-grid" id="instagram-grid">
+
+        <!-- ── INSTAGRAM EMBED 1 ──
+             Replace the blockquote below with the Instagram embed code.
+             Go to the post → ··· → Embed → Copy embed code, paste it here.
+        ── -->
+        <div class="embed-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DGvp64PIvKA/"
+            data-instgrm-version="14"
+            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:0; padding:0; width:99.375%;">
+          </blockquote>
+        </div>
+
+        <!-- ── INSTAGRAM EMBED 2 ──
+             Paste another Instagram embed blockquote here, replacing the placeholder.
+        ── -->
+        <div class="embed-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DNyh0Kbg9WQ/"
+            data-instgrm-version="14"
+            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:0; padding:0; width:99.375%;">
+          </blockquote>
+        </div>
+
+        <!-- ── INSTAGRAM EMBED 3 ──
+             Paste another Instagram embed blockquote here, replacing the placeholder.
+        ── -->
+        <div class="embed-card">
+          <div class="embed-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+            Paste an Instagram embed here
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="platform-divider"></div>
+
+    <!-- ═══════════════════════════════════
+         TIKTOK
+    ════════════════════════════════════ -->
+    <div class="platform-block">
+      <div class="platform-header">
+        <div class="platform-icon tiktok">
+          <!-- TikTok icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+          </svg>
+        </div>
+        <div class="platform-title">TikTok</div>
+      </div>
+
+      <div class="embed-grid">
+
+        <!-- ── TIKTOK EMBED 1 ──
+             Go to the TikTok video → Share → Embed → copy the <blockquote> + <script> tags.
+             Paste only the <blockquote> inside this .embed-card div (the shared script loads once below).
+        ── -->
+        <div class="embed-card">
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@youngandhungryk_12/video/7457663453143059743"
+            data-video-id="7457663453143059743" style="max-width: 605px;min-width: 325px;">
+            <section> <a target="_blank" title="@youngandhungryk_12"
+                href="https://www.tiktok.com/@youngandhungryk_12?refer=embed">@youngandhungryk_12</a>
+              <p>From hate and rejection to unstoppable passion! Meet high schooler James Chan as he opens up about his
+                journey into magic and juggling, sharing tips and inspiration for kids who might not fall in love with
+                something right away but can grow to discover their passion. Be on the lookout for the first podcast of
+                Young &#38; Hungry K-12 on Spotify to to learn more about James, and other talented kids.</p> <a
+                target="_blank" title="♬ original sound  - Young and Hungry Podcast"
+                href="https://www.tiktok.com/music/original-sound-Young-and-Hungry-Podcast-7457663387581926175?refer=embed">♬
+                original sound - Young and Hungry Podcast</a>
+            </section>
+          </blockquote>
+          <script async src="https://www.tiktok.com/embed.js"></script>
+        </div>
+
+        <!-- ── TIKTOK EMBED 2 ── -->
+        <div class="embed-card">
+          <div class="embed-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+            </svg>
+            Paste a TikTok embed here
+          </div>
+        </div>
+
+        <!-- ── TIKTOK EMBED 3 ── -->
+        <div class="embed-card">
+          <div class="embed-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+            </svg>
+            Paste a TikTok embed here
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="platform-divider"></div>
+
+    <!-- ═══════════════════════════════════
+         X / TWITTER POSTS
+    ════════════════════════════════════ -->
+    <div class="platform-block">
+      <div class="platform-header">
+        <div class="platform-icon twitter">
+          <!-- X icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </div>
+        <div class="platform-title">X (Twitter)</div>
+      </div>
+
+      <div class="embed-grid">
+
+        <!-- ── X / TWITTER EMBED 1 ──
+             Go to the post on X → ··· → Embed post → copy the <blockquote class="twitter-tweet"> code.
+             Paste the blockquote inside this .embed-card div.
+             The shared twitter/widgets.js script at the bottom of the page will render all tweets.
+        ── -->
+        <div class="embed-card">
+          <blockquote class="twitter-tweet" data-media-max-width="560">
+            <p lang="en" dir="ltr">Teachers, are you overwhelmed by classroom chaos? Hear from Sean Young, PhD about how
+              to use principles of psychology to your advantage: <a
+                href="https://t.co/ygZXknegp2">https://t.co/ygZXknegp2</a></p>&mdash; Young and Hungry Podcast
+            (@yandhshow) <a href="https://twitter.com/yandhshow/status/1913274477208891621?ref_src=twsrc%5Etfw">April
+              18, 2025</a>
+          </blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+        <!-- ── X / TWITTER EMBED 2 ── -->
+        <div class="embed-card">
+          <blockquote class="twitter-tweet" data-media-max-width="560">
+            <p lang="en" dir="ltr">Teachers, are you overwhelmed by classroom chaos? Hear from Sean Young, PhD about how
+              to use principles of psychology to your advantage: <a
+                href="https://t.co/ygZXknegp2">https://t.co/ygZXknegp2</a></p>&mdash; Young and Hungry Podcast
+            (@yandhshow) <a href="https://twitter.com/yandhshow/status/1913274477208891621?ref_src=twsrc%5Etfw">April
+              18, 2025</a>
+          </blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+        <!-- ── X / TWITTER EMBED 3 ── -->
+        <div class="embed-card">
+          <div class="embed-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            Paste an X post embed here
+          </div>
+        </div>
+
+        <!-- ── X / TWITTER EMBED 3 ── -->
+        <div class="embed-card">
+          <div class="embed-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            Paste an X post embed here
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /platform-section -->
+
+  <footer>
+    © 2026 Young and Hungry with Dr. Young. All rights reserved.
+  </footer>
+
+  <!-- Social embed scripts (load once at the end) -->
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script async src="https://www.tiktok.com/embed.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</body>
+
+</html>

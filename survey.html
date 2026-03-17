@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Yourself – Young and Hungry with Dr. Young</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --sky: #c8dce8;
@@ -41,21 +50,33 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .nav-logo {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       border: 2.5px solid var(--accent);
       border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--accent);
-      font-weight: 700; font-size: 12px;
+      font-weight: 700;
+      font-size: 12px;
       text-decoration: none;
     }
 
     .nav-links {
-      display: flex; align-items: center; gap: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
       list-style: none;
     }
 
@@ -67,10 +88,20 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a.active { color: var(--accent); font-weight: 500; }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
-    .nav-actions { display: flex; gap: 0.6rem; align-items: center; }
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
 
     .btn-signin {
       font-size: 0.82rem;
@@ -83,7 +114,10 @@
       border-radius: 6px;
       transition: background 0.2s;
     }
-    .btn-signin:hover { background: var(--sky-mid); }
+
+    .btn-signin:hover {
+      background: var(--sky-mid);
+    }
 
     .btn-register {
       font-size: 0.82rem;
@@ -97,7 +131,11 @@
       font-weight: 500;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-register:hover { background: #2d6a8a; transform: translateY(-1px); }
+
+    .btn-register:hover {
+      background: #2d6a8a;
+      transform: translateY(-1px);
+    }
 
     /* PAGE HERO BAND */
     .quiz-hero {
@@ -113,7 +151,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 80% at 50% 120%, rgba(61,122,154,0.15) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 80% at 50% 120%, rgba(61, 122, 154, 0.15) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -179,7 +217,8 @@
     }
 
     .badge svg {
-      width: 13px; height: 13px;
+      width: 13px;
+      height: 13px;
     }
 
     /* FORM WRAPPER */
@@ -197,7 +236,7 @@
       background: var(--card-bg);
       border-radius: 18px;
       padding: 6px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
       opacity: 0;
       animation: fadeUp 0.7s ease 0.5s forwards;
       overflow: hidden;
@@ -223,56 +262,169 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* HAMBURGER BUTTON */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .nav-hamburger:hover {
+      background: var(--sky-mid);
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-mid);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* MOBILE DROPDOWN */
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 52px;
+      left: 0;
+      right: 0;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--sky-mid);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      z-index: 99;
+      padding: 0.5rem 0;
+      list-style: none;
+    }
+
+    .nav-dropdown.open {
+      display: block;
+    }
+
+    .nav-dropdown li a {
+      display: block;
+      padding: 0.75rem 2rem;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-dropdown li a:hover,
+    .nav-dropdown li a.active {
+      background: var(--sky-mid);
+      color: var(--accent);
     }
 
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .form-container { border-radius: 12px; }
+      .nav-center {
+        position: static;
+        transform: none;
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .form-container {
+        border-radius: 12px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- NAVBAR -->
   <nav>
     <a href="index.html" class="nav-logo">Y</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Community</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="about.html">About us</a></li>
-      <li><a href="#" class="active">Quiz Yourself</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="btn-signin">Sign in</button>
-      <button class="btn-register">Register</button>
+    <div class="nav-center">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about-us.html">About us</a></li>
+        <li><a href="#" class="active">Test Your Knowledge</a></li>
+      </ul>
     </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-dropdown" id="navDropdown">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about-us.html">About us</a></li>
+      <li><a href="#" class="active">Test Your Knowledge</a></li>
+    </ul>
   </nav>
+  <script>
+    const btn = document.getElementById('navHamburger');
+    const menu = document.getElementById('navDropdown');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+  </script>
 
   <!-- HERO BAND -->
   <div class="quiz-hero">
-    <div class="quiz-eyebrow">Test your knowledge</div>
-    <h1>Quiz <em>Yourself</em></h1>
-    <p>How much do you know about AI? Take the quiz and find out — no pressure, just curiosity.</p>
+    <div class="quiz-eyebrow"></div>
+    <h1>Test Your <em>Knowledge</em></h1>
+    <p>How much do you know about AI? Take our interactive quiz and find out — no pressure, just curiosity.</p>
     <div class="quiz-badges">
       <span class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
         </svg>
         ~5 minutes
       </span>
       <span class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
         Free to take
       </span>
       <span class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
         Open to all
       </span>
@@ -284,9 +436,7 @@
     <div class="form-container">
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScPSI9fKbN__HrAZ9rblzyzCVaGCyyi3lcYaKCu8QbcQ4-wCQ/viewform?embedded=true"
-        title="Quiz Yourself"
-        marginheight="0"
-        marginwidth="0">
+        title="Quiz Yourself" marginheight="0" marginwidth="0">
         Loading…
       </iframe>
     </div>
@@ -297,4 +447,5 @@
   </footer>
 
 </body>
+
 </html>
